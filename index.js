@@ -76,7 +76,7 @@ const handleAttrs = (node, opts) => {
     if (names.length <= 0) return;
 
     const res = handleNames(names, opts);
-    attrs[key] = res.names.join('');
+    attrs[key] = res.names.join(' ');
     csses = csses.concat(res.csses);
   })
 
