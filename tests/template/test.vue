@@ -4,7 +4,7 @@
 */
 <template>
   <Form>
-    <FormItem class="fs12"></FormItem>
+    <FormItem class="fs12 h100%"></FormItem>
   </Form>
 </template>
 

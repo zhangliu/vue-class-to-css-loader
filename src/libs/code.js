@@ -1,7 +1,7 @@
 const getEleCode = ele => {
     if (ele) {
         const params = getParams(ele.attrs)
-        const content = ele.content || ''
+        const content = (ele.content || '').replace(/^\s*$/g, '').replace(/\/\/\n/g, '')
         if (params.length) {
             return `<${ele.type} ${params.join(' ')}>${content}</${ele.type}>`
         }

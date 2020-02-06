@@ -16,11 +16,13 @@ module.exports = source => {
   const handleRes = handleHtml(html, loaderUtils.getOptions(this) || {});
   if (!handleRes) return source;
 
-  return console.log(handleRes, 'xxxxxxxxxxxxxxxxxxxxxxx');
   res.template = res.template ? { ...res.template, content: handleRes.html } : undefined;
-  
-  const style = {} // [handleRes.csses];
-  res.styles = Array.isArray(res.styles) ? res.styles.push(style) : [style];
+  const style = {
+    type: 'style',
+    content: [...(new Set(handleRes.csses))].join(''),
+    attrs: { lang: 'css', scoped: true },
+  };
+  res.styles = Array.isArray(res.styles) ? res.styles.concat(style) : [style];
 
   return `
     ${getEleCode(res.template)}
